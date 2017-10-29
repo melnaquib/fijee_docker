@@ -1,0 +1,64 @@
+From e90d5d73c9499118999d5f2f0cbba30dafd4b166 Mon Sep 17 00:00:00 2001 PARTIALLY
+From: Mustafa Elnaquib <mustafa@leap-med.com>
+Date: Sat, 17 Dec 2016 04:19:35 +0200
+Subject: [PATCH] fix cmake files
+
+added TARGETS ARCHIVE DESTINATION for static libs installation
+---
+ Fijee/Biophysics/CMakeLists.txt                   |  2 +-
+ Fijee/Electrodes/CMakeLists.txt                   |  2 +-
+ Fijee/Finite_element_method_models/CMakeLists.txt |  2 +-
+ Fijee/Mesh_rendering/CMakeLists.txt               |  2 +-
+ Fijee/Utils/CMakeLists.txt                        |  2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Fijee/Biophysics/CMakeLists.txt b/Fijee/Biophysics/CMakeLists.txt
+index 65391bc..ca0898f 100644
+--- a/Fijee/Biophysics/CMakeLists.txt
++++ b/Fijee/Biophysics/CMakeLists.txt
+@@ -25,4 +25,4 @@ add_library( FijeeBiophysics ${Fijee_H} ${HEADERS} ${SOURCES} )
+ # Add FijeeUtils target libraries
+ target_link_libraries( FijeeBiophysics ${Fijee_TARGET_LINK_LIBRARIES} )
+ # Install
+-install( TARGETS FijeeBiophysics EXPORT FijeeTargets LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib )
++install( TARGETS FijeeBiophysics EXPORT FijeeTargets LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib )
+diff --git a/Fijee/Electrodes/CMakeLists.txt b/Fijee/Electrodes/CMakeLists.txt
+index efd2c73..510126f 100644
+--- a/Fijee/Electrodes/CMakeLists.txt
++++ b/Fijee/Electrodes/CMakeLists.txt
+@@ -25,4 +25,4 @@ add_library( FijeeElectrodes ${Fijee_H} ${HEADERS} ${SOURCES} )
+ # Add FijeeUtils target libraries
+ target_link_libraries( FijeeElectrodes ${Fijee_TARGET_LINK_LIBRARIES} )
+ # Install
+-install( TARGETS FijeeElectrodes EXPORT FijeeTargets LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib )
++install( TARGETS FijeeElectrodes EXPORT FijeeTargets LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib )
+diff --git a/Fijee/Finite_element_method_models/CMakeLists.txt b/Fijee/Finite_element_method_models/CMakeLists.txt
+index 36c2045..69702f8 100644
+--- a/Fijee/Finite_element_method_models/CMakeLists.txt
++++ b/Fijee/Finite_element_method_models/CMakeLists.txt
+@@ -49,4 +49,4 @@ add_library( FijeeFEM ${Fijee_H} ${HEADERS} ${UFL_HEADERS} ${SOURCES} )
+ # Add FijeeUtils target libraries
+ target_link_libraries( FijeeFEM ${Fijee_TARGET_LINK_LIBRARIES} ${DOLFIN_LIBRARIES} )
+ # Install
+-install( TARGETS FijeeFEM EXPORT FijeeTargets LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib )
++install( TARGETS FijeeFEM EXPORT FijeeTargets LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib )
+diff --git a/Fijee/Mesh_rendering/CMakeLists.txt b/Fijee/Mesh_rendering/CMakeLists.txt
+index fb60e72..ee735ea 100644
+--- a/Fijee/Mesh_rendering/CMakeLists.txt
++++ b/Fijee/Mesh_rendering/CMakeLists.txt
+@@ -35,4 +35,4 @@ add_library( FijeeMesh ${Fijee_H} ${HEADERS} ${SOURCES} ${CUDA_SOURCES_} )
+ # Add FijeeUtils target libraries
+ target_link_libraries( FijeeMesh ${VTK_LIBRARIES} ${CUDA_LIBRARIES} )
+ # Install
+-install( TARGETS FijeeMesh EXPORT FijeeTargets LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib )
++install( TARGETS FijeeMesh EXPORT FijeeTargets LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib )
+diff --git a/Fijee/Utils/CMakeLists.txt b/Fijee/Utils/CMakeLists.txt
+index 3b62e02..12faa4c 100644
+--- a/Fijee/Utils/CMakeLists.txt
++++ b/Fijee/Utils/CMakeLists.txt
+@@ -28,4 +28,4 @@ add_library( FijeeUtils ${Fijee_H} ${HEADERS} ${SOURCES} )
+ # Add FijeeUtils target libraries
+ #target_link_libraries( FijeeUtils ${Fijee_TARGET_LINK_LIBRARIES} )
+ # Install
+-install( TARGETS FijeeUtils EXPORT FijeeTargets LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib )
++install( TARGETS FijeeUtils EXPORT FijeeTargets LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib )
